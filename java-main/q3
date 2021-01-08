@@ -1,0 +1,45 @@
+//q3
+//Write a java servlet program with a method called initials () that takes input representing a full name
+//and returns the initials of the name in all capital letters.
+//Example: If Input is Robert B. Qwerty then Output should be RBQ
+
+
+<form action="q3" action="get">
+<input type="text" name="name" >
+<input type="submit" value="submit" >
+  </form>
+........................................
+(servlet)
+
+import java.io.*;
+import java.sql.*;
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/q3")
+public class q3 extends HttpServlet {
+
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+response.setContentType("text/html");
+PrintWriter out = response.getWriter();
+String name = request.getParameter("name");
+String word[] = name.split(" ");
+String initial="";
+for(String word1:word)
+{
+initial+=Character.toUpperCase(word1.charAt(0));
+}
+out.println("<h1>"+initial+"</h1>");
+
+}
+
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+// TODO Auto-generated method stub
+doGet(request, response);
+}
+
+}
